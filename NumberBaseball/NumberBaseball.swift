@@ -9,17 +9,17 @@ import Foundation
 
 struct NumberBaseball {
     
-    var answer: String
+    var answer: [Character]
     
     init() {
-        self.answer = ""
+        self.answer = []
     }
     
     mutating func newGame() {
         // 새 게임을 시작하고자 할 때 실행하는 메서드입니다.
         // 세 자리 숫자, 첫 번째 자리는 0이 없으며, 중복되는 숫자 또한 없습니다.
         
-        answer = ""
+        answer = []
         var availableNumbers: [Character] = Array("0123456789")
         
         while answer.count < 3 {
