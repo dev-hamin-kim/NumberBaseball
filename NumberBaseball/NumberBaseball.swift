@@ -39,4 +39,18 @@ struct NumberBaseball {
         }
         
     }
+    
+    // 입력된 값에서 몇 개가 스트라이크고 볼인지 구분해줍니다.
+    public func umpireCall(for input: [Character]) -> (strike: Int, ball: Int) {
+        var (strike, ball) = (0, 0)
+        
+        for (index, char) in input.enumerated() {
+            if self.answer[index] == char {
+                strike += 1
+            } else if self.answer.contains(char) {
+                ball += 1
+            }
+        }
+        return (strike, ball)
+    }
 }
