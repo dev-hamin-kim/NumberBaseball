@@ -33,8 +33,11 @@ struct NumberBaseball {
                 availableNumbers.removeAll(where: { $0 == randomNumber })
             } else {
                 let randomIndex = Int.random(in: 0...availableNumbers.count - 1)
-
-                answer.append(availableNumbers[randomIndex])
+                let randomNumber = availableNumbers[randomIndex]
+                
+                answer.append(randomNumber)
+                // 사용 가능한 숫자의 목록에서 answer에 추가했던 숫자를 지워줍니다.
+                availableNumbers.removeAll(where: { $0 == randomNumber })
             }
         }
         
