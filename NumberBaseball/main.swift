@@ -8,9 +8,10 @@
 import Foundation
 
 let interface = GameInterface()
+var keepPlaying = true
 
 interface.greeting()
-while true {
+while keepPlaying {
     interface.mainPage()
 }
 
@@ -30,7 +31,9 @@ struct GameInterface {
         
         switch input {
         case "1": playGame()
-        case "3": greeting()
+        case "3":
+            print("잘 가게나, 낯선이여.")
+            keepPlaying = false
         default: print("유효하지 않은 입력이네.")
         }
     }
