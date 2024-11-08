@@ -8,6 +8,7 @@
 import Foundation
 
 let interface = GameInterface()
+var records = GameRecords()
 var keepPlaying = true
 
 interface.greeting()
@@ -31,6 +32,7 @@ struct GameInterface {
         
         switch input {
         case "1": playGame()
+        case "2": records.showRecords()
         case "3":
             print("잘 가게나, 낯선이여.")
             keepPlaying = false
@@ -41,6 +43,7 @@ struct GameInterface {
     func playGame() {
         var game = NumberBaseball()
         var hadRightGuess = false
+        var guessTaken = 0
         
         print("그럼 놀이를 시작하지. 규칙은 알고 있을 것이라 믿네.")
         game.newGame()
@@ -51,8 +54,10 @@ struct GameInterface {
             let input = Array(readLine()!)
             
             if input == game.answer {
+                guessTaken += 1
                 hadRightGuess = true
                 print("축하하네, 정답이군.")
+                records.records.append(guessTaken)
                 break
             }
             
@@ -62,6 +67,7 @@ struct GameInterface {
                 && input[0] != input[1]
                 && input[0] != input[2]
                 && input[1] != input[2] {
+                guessTaken += 1
                 print("\(game.umpireCall(for: input).strike) 스트라이크, \(game.umpireCall(for: input).ball) 볼.")
             } else {
                 print("3자리의 서로 중복되지 않는 숫자만 입력이 가능하네.")
